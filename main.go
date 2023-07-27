@@ -9,13 +9,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const (
-	host     = "localhost"
-	port     = 5432
-	user     = "postgres"
-	password = "password"
-	dbname   = "gatherbox"
-)
+// const (
+// 	host     = "localhost"
+// 	port     = 5432
+// 	user     = "postgres"
+// 	password = "password"
+// 	dbname   = "gatherbox"
+// )
 
 func enableCors(c *gin.Context) {
 	c.Header("Access-Control-Allow-Origin", "*")
@@ -30,7 +30,7 @@ func enableCors(c *gin.Context) {
 	c.Next()
 }
 func main() {
-	psql := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	psql := "postgres://ankur:c3fTHiZaJxguXjXxB28x80u0biznlK52@dpg-cj0i7gb438irjjdaak30-a.oregon-postgres.render.com/gatherbox_1ca6?sslmode=require"
 	db, err := sql.Open("postgres", psql)
 	if err != nil {
 		fmt.Println("Cannot Connect To DataBase")
